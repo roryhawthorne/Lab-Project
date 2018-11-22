@@ -1,0 +1,17 @@
+.container {
+  position: relative;
+  height: 14rem;
+}
+
+.jumbotron {
+  position: absolute;
+    top: 50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+}
+
+.col-centered {
+    width: 100%;
+    float: none;
+    margin: 0 auto;
+}
