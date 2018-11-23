@@ -7,5 +7,5 @@ CREATE TABLE Member (
     password VARCHAR(255) NOT NULL    
 );
 
-INSERT INTO Member (email, password) VALUES ('adam.able@kcl.ac.uk', '123');
-INSERT INTO Member (email, password) VALUES ('k1763909@kcl.ac.uk', '456');
+INSERT INTO Member (email, password) VALUES ('adam.able@kcl.ac.uk', '123456789');
+INSERT INTO Member (email, password) VALUES ('k1763909@kcl.ac.uk', '987654321');
