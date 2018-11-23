@@ -43,5 +43,12 @@ function is_get_request() {
   return $_SERVER['REQUEST_METHOD'] == 'GET';
 }
 
+function get_boolean_test($bit) {
+    if ($bit == 0) {
+        return "False";
+    } else {
+        return "True";
+    }
+}
 
 ?>
