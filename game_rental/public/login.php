@@ -14,14 +14,6 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
  
 // Include config file
 require_once "../private/initialize.php";
-
-/* Attempt to connect to MySQL database */
-$link = mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
- 
-// Check connection
-if($link === false){
-    die("ERROR: Could not connect. " . mysqli_connect_error());
-}
  
 // Define variables and initialize with empty values
 $email = $password = "";
@@ -47,9 +39,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     // Validate credentials
     if(empty($email_err) && empty($password_err)){
         // Prepare a select statement
-        $sql = "SELECT id, email, password FROM Member WHERE email = ?";
+        $sql = "SELECT id, email, password FROM members WHERE email = ?";
         
-        if($stmt = mysqli_prepare($link, $sql)){
+        if($stmt = mysqli_prepare($db, $sql)){
             // Bind variables to the prepared statement as parameters
             mysqli_stmt_bind_param($stmt, "s", $param_email);
             
@@ -66,7 +58,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     // Bind result variables
                     mysqli_stmt_bind_result($stmt, $id, $email, $hashed_password);
                     if(mysqli_stmt_fetch($stmt)){
-                        //if(password_verify($password, $hashed_password)){
+                        if(password_verify($password, $hashed_password)){
                             // Password is correct, so start a new session
                             session_start();
                             
@@ -77,10 +69,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             
                             // Redirect user to welcome page
                             header("location: game-example.php");
-                        //} else{
+                        } else{
                             // Display an error message if password is not valid
-                        //    $password_err = "The password you entered was not valid.";
-                        //}
+                            $password_err = "The password you entered was not valid.";
+                        }
                     }
                 } else{
                     // Display an error message if username doesn't exist
@@ -96,7 +88,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     }
     
     // Close connection
-    mysqli_close($link);
+    mysqli_close($db);
 }
 ?>
 
@@ -120,26 +112,28 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
       
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
         
-          <div class="form-group <?php echo (!empty($email_err)) ? 'has-error' : ''; ?>">
+            <div class="form-group <?php echo (!empty($email_err)) ? 'has-error' : ''; ?>">
+              
+                <label for="exampleInputEmail1">Email address</label>
+                <input name="login-email" type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email" value="<?php echo $email; ?>">
+                <span class="help-block"><?php echo $username_err; ?></span>
+                
+            </div>
           
-            <label for="exampleInputEmail1">Email address</label>
-            <input name="login-email" type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email" value="<?php echo $email; ?>">
-            <span class="help-block"><?php echo $username_err; ?></span>
+            <div class="form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
+          
+                <label for="exampleInputPassword1">Password</label>
+                <input name="login-password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                <span class="help-block"><?php echo $password_err; ?></span>
             
-          </div>
+            </div>
           
-          <div class="form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
-          
-            <label for="exampleInputPassword1">Password</label>
-            <input name="login-password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-            <span class="help-block"><?php echo $password_err; ?></span>
-            
-          </div>
-          
-          <div class="form-group">
+            <div class="form-group">
                 <input type="submit" class="btn btn-primary" value="Login">
             </div>
-          <button type="submit" class="btn btn-secondary float-right">Sign-Up</button>
+            <br/>
+            <p>Dont have an account? </p>
+            <a href="sign-up.php" class="btn btn-default">Sign up now</a>
         </form>
         
       </div>
