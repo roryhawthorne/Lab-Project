@@ -88,5 +88,5 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 
   </div>
 
-<?php include(SHARED_PATH . '/members_footer.php'); ?>
+<?php include(SHARED_PATH . '/footer.php'); ?>
 
