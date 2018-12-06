@@ -46,7 +46,7 @@
             <a class="dropdown-item" href="#">Homepage</a>
             <a class="dropdown-item" href="#">Details</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="../private/scripts/logout.php">Logout</a>
+            <a class="dropdown-item" href="../../private/scripts/logout.php">Logout</a>
           </div>
         </li>
       </ul>
