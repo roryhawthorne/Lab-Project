@@ -1,6 +1,5 @@
 .container {
     position: relative;
-    height: 14rem;
 }
 
 .jumbotron {
@@ -176,4 +175,18 @@ img {
  * END NAVBAR STUFF
  */
 
+
+/*
+ * GAME DETAILS STUFF
+ */
+.game-details-title {
+    font-family: 'Bungee', cursive;
+}
+
+.game-details-text {
+    font-family: 'Open Sans', sans-serif;
+}
+/*
+ * END GAME DETAILS STUFF
+ */
  
