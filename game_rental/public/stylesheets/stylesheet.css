@@ -1,10 +1,10 @@
 .container {
-  position: relative;
-  height: 14rem;
+    position: relative;
+    height: 14rem;
 }
 
 .jumbotron {
-  position: absolute;
+    position: absolute;
     top: 50%;
     left:50%;
     transform: translate(-50%,-50%);
@@ -17,8 +17,8 @@
 }
 
 .game:hover {
-  opacity: 0.5;
-  filter: alpha(opacity=50); /* For IE8 and earlier */
+    opacity: 0.5;
+    filter: alpha(opacity=50); /* For IE8 and earlier */
 }
 
 /*
