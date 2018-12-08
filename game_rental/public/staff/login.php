@@ -1,4 +1,4 @@
-<?php require_once('../private/initialize.php'); ?>
+<?php require_once('../../private/initialize.php'); ?>
 
 
 <?php
@@ -13,7 +13,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
 }
  
 // Include config file
-require_once "../private/initialize.php";
+require_once "../../private/initialize.php";
  
 // Define variables and initialize with empty values
 $email = $password = "";
