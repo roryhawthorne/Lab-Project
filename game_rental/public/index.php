@@ -1,50 +1,14 @@
 <?php require_once('../private/initialize.php'); ?>
+<?php $page_title = 'Computer Games Rental'; ?>
+<?php include(SHARED_PATH . '/header.php'); ?>
 
-
-<!DOCTYPE HTML>
-<html lang="en">
-<head>
-  <title>Computer Games Rental</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link href="https://fonts.googleapis.com/css?family=Bungee" rel="stylesheet">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-  <link rel="stylesheet" media="all" type="text/css" href="stylesheets/stylesheet.css" />
-</head>
-
-<body style="overflow-y: scroll; overflow-x:hidden; background-color: #e7e7e7;">
-
-
-    <!-- navbar -->
-    <div class="shadow-lg">
-        <nav class="navbar navbar-expand-md navbar-light bg-faded shadow-lg">
-          <a class="navbar-brand" href="javascript:void(0)">
-            <img src="images/logo-header.png" width="380" height="98">
-          </a>
-          <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-        
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav" style="margin: auto;">
-              <li class="nav-item" >
-                <a class="nav-link" href="javascript:void(0)">XBOX ONE</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="javascript:void(0)">PS4</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="javascript:void(0)">SWITCH</a>
-              </li>
-            </ul>
-            <ul class="navbar-nav">
-              <span class="navbar-brand" href="javascript:void(0)">
-                <img src="images/header-right.jpg" width="380" height="98">
-              </span>
-            </ul>
-          </div>
-        </nav>
-    </div>
+<?php 
+    $sql = "SELECT id, title, release_date, score, image FROM games";
+    $result = mysqli_query($db, $sql);
+    confirm_result_set($result);
+            
+    $num_rows = $result->num_rows;
+?>
 
     <!-- carousel -->
     <div class="row">
@@ -57,13 +21,13 @@
                 </ol>
                 <div class="carousel-inner">
                       <div class="carousel-item active">
-                          <img class="d-block w-100" src="images/carousel/shadowofthetombraider-carousel.jpg" alt="First slide">
+                          <a href="game-details.php?id=1"><img class="d-block w-100" src="images/carousel/shadowofthetombraider-carousel.jpg" alt="First slide"></a>
                       </div>
                       <div class="carousel-item">
-                          <img class="d-block w-100" src="images/carousel/bfv-carousel.jpg" alt="Second slide">
+                          <a href="game-details.php?id=1"><img class="d-block w-100" src="images/carousel/bfv-carousel.jpg" alt="Second slide"></a>
                       </div>
                       <div class="carousel-item">
-                          <img class="d-block w-100" src="images/carousel/rdr2-carousel.jpg" alt="Third slide">
+                          <a href="game-details.php?id=1"><img class="d-block w-100" src="images/carousel/rdr2-carousel.jpg" alt="Third slide"></a>
                       </div>
                 </div>
                 <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -101,13 +65,13 @@
         </div>
         <div class="row" style="margin: auto;">
             <div class="col-md-4 game" >
-                <a href="game-example.php"><img src="images/box-art/bfv.jpg" class="img-fluid shadow" style="border-radius: 1em;"/></a>
+                <a href="game-details.php?varname=<?php echo $row['id'] ?>"><img src="images/box-art/bfv.jpg" class="img-fluid shadow" style="border-radius: 1em;"/></a>
             </div>
             <div class="col-md-4 game">
-                <a href="game-example.php"><img src="images/box-art/bfv.jpg" class="img-fluid shadow" style="border-radius: 1em;"/></a>
+                <a href="game-details.php?varname=<?php echo $row['id'] ?>"><img src="images/box-art/bfv.jpg" class="img-fluid shadow" style="border-radius: 1em;"/></a>
             </div>
             <div class="col-md-4 game">
-                <a href="game-example.php"><img src="images/box-art/bfv.jpg" class="img-fluid shadow" style="border-radius: 1em;"/></a>
+                <a href="game-details.php?varname=<?php echo $row['id'] ?>"><img src="images/box-art/bfv.jpg" class="img-fluid shadow" style="border-radius: 1em;"/></a>
             </div>
         </div>
         <div class="row">
@@ -139,11 +103,6 @@
         </div>
     
         <?php
-            $sql = "SELECT title, release_date, score, image FROM games";
-            $result = mysqli_query($db, $sql);
-            confirm_result_set($result);
-            
-            $num_rows = $result->num_rows;
             $count = 0;
             
             while($row = mysqli_fetch_assoc($result)) { 
@@ -154,7 +113,7 @@
                 }
                 ?>
                     <div class="col-md-4 game">
-                        <a href="game-example.php"><img src="<?php echo $row['image'] ?>" class="img-fluid shadow" style="border-radius: 1em;"/></a>
+                        <a href="game-details.php?id=<?php echo $row['id'] ?>"><img src="<?php echo $row['image'] ?>" class="img-fluid shadow" style="border-radius: 1em;"/></a>
                     </div>
                 <?php
                 if ($count%3 == 2) {
