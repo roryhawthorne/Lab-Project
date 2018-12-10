@@ -15,11 +15,27 @@
     margin: 0 auto;
 }
 
+a {
+    color: #973686;
+}
+
+a:hover {
+    color: #572a4f;
+}
+
 .game:hover {
     opacity: 0.5;
     filter: alpha(opacity=50); /* For IE8 and earlier */
 }
 
+.filter-btn {
+    background-color: #973686;
+    color: white;
+}
+
+.filter-btn:hover {
+    background-color: #572a4f;
+}
 /*
  * disable image highlighting
  */
