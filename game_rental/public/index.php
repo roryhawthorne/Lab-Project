@@ -21,13 +21,13 @@
                 </ol>
                 <div class="carousel-inner">
                       <div class="carousel-item active">
-                          <a href="game-details.php?id=1"><img class="d-block w-100" src="images/carousel/shadowofthetombraider-carousel.jpg" alt="First slide"></a>
+                          <a href="#"><img class="d-block w-100" src="images/carousel/shadowofthetombraider-carousel.jpg" alt="First slide"></a>
                       </div>
                       <div class="carousel-item">
-                          <a href="game-details.php?id=1"><img class="d-block w-100" src="images/carousel/bfv-carousel.jpg" alt="Second slide"></a>
+                          <a href="#"><img class="d-block w-100" src="images/carousel/bfv-carousel.jpg" alt="Second slide"></a>
                       </div>
                       <div class="carousel-item">
-                          <a href="game-details.php?id=1"><img class="d-block w-100" src="images/carousel/rdr2-carousel.jpg" alt="Third slide"></a>
+                          <a href="#"><img class="d-block w-100" src="images/carousel/rdr2-carousel.jpg" alt="Third slide"></a>
                       </div>
                 </div>
                 <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -65,13 +65,13 @@
         </div>
         <div class="row" style="margin: auto;">
             <div class="col-md-4 game" >
-                <a href="game-details.php?varname=<?php echo $row['id'] ?>"><img src="images/box-art/bfv.jpg" class="img-fluid shadow" style="border-radius: 1em;"/></a>
+                <a href="#"><img src="images/box-art/bfv.jpg" class="img-fluid shadow" style="border-radius: 1em;"/></a>
             </div>
             <div class="col-md-4 game">
-                <a href="game-details.php?varname=<?php echo $row['id'] ?>"><img src="images/box-art/bfv.jpg" class="img-fluid shadow" style="border-radius: 1em;"/></a>
+                <a href="#"><img src="images/box-art/bfv.jpg" class="img-fluid shadow" style="border-radius: 1em;"/></a>
             </div>
             <div class="col-md-4 game">
-                <a href="game-details.php?varname=<?php echo $row['id'] ?>"><img src="images/box-art/bfv.jpg" class="img-fluid shadow" style="border-radius: 1em;"/></a>
+                <a href="#"><img src="images/box-art/bfv.jpg" class="img-fluid shadow" style="border-radius: 1em;"/></a>
             </div>
         </div>
         <div class="row">
