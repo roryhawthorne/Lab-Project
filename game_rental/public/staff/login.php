@@ -92,23 +92,57 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 }
 ?>
 
-
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
-  <title>Login</title>
+  <title>Staff Login</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="https://fonts.googleapis.com/css?family=Bungee" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-  <link rel="stylesheet" href="stylesheets/stylesheet.css" type="text/css">
+  <link rel="stylesheet" media="all" type="text/css" href="<?php $css = PUBLIC_PATH . '/stylesheets/stylesheet.css';  echo substr($css, 9);?>" />
 </head>
 
-<body>
+<body style="overflow-y: scroll; overflow-x:hidden; background-color: #e7e7e7;">
+
+
+    <!-- navbar -->
+    <div class="shadow-lg">
+        <nav class="navbar navbar-expand-md navbar-light bg-faded shadow-lg">
+          <a class="navbar-brand" href="<?php $path = PUBLIC_PATH . '/index.php'; echo substr($path, 9);?>">
+            <img src="../images/logo-header.png" width="380" height="98">
+          </a>
+          <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav" style="margin: auto;">
+              <li class="nav-item" >
+                <a class="nav-link" href="javascript:void(0)">XBOX ONE</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="javascript:void(0)">PS4</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="javascript:void(0)">SWITCH</a>
+              </li>
+            </ul>
+            <ul class="navbar-nav">
+              <span class="navbar-brand" href="javascript:void(0)">
+                <img src="../images/header-right.jpg" width="380" height="98">
+              </span>
+            </ul>
+          </div>
+        </nav>
+    </div>
+
   <div class="container jumbotron">
   
-    <div class="row">
+    <div class="row ">
       <div class="col-4"></div>
-      <div class="col jumbotron">
+      <div class="col jumbotron shadow">
       
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
         
@@ -141,5 +175,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     </div>
 
   </div>
+  
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
-<?php include(SHARED_PATH . '/footer.php'); ?>
+</body>
+</html>
+
+<?php
+  db_disconnect($db);
+?>
