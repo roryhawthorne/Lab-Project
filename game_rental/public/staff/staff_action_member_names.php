@@ -1,4 +1,4 @@
-<?php require_once('../private/initialize.php'); ?>
+<?php require_once('../../private/initialize.php'); ?>
 
 <?php
 // Initialize the session
@@ -11,9 +11,6 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 }
 ?>
 
-<?php
-$subject_set = find_all_subjects();
- ?>
 <?php $page_title = 'Member Names'; ?>
 <?php include(SHARED_PATH . '/staff_header.php'); ?>
 
@@ -36,18 +33,21 @@ $subject_set = find_all_subjects();
 
 
   	<table class="list">
-  	  <tr>
-        <th>ID</th>
+    <tr>
+    <td>email</td>
     </tr>
-    <?php foreach($subjects as $subject){ ?>
-        <tr>
-          <td><?php echo h($subject['email']); ?></td>
-        </tr>
-      
-    <?php } ?>
-    </table>
-    <?php
-      mysqli_free_result($subject_set);
-    ?>
+    <tr>
+<?php 
+    $sql = "SELECT * FROM members ORDER BY ASC";
+    $result = mysqli_query($db, $sql);
+    while($row = mysqli_fetch_assoc($result)) 
+    {
+        ?>
+        <td><?php echo $row['email']; ?></td>
+        <?php
+    }
+ ?>
+</tr>
+</table>
   </div>
-  <?php include(SHARED_PATH . '/members_footer.php'); ?>
+  <?php include(SHARED_PATH . '/footer.php'); ?>
