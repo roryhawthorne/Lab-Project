@@ -28,7 +28,7 @@
 
                 <ul class="list-unstyled">
                     <li> 
-                        <a href="staff/login.php" style="color: #a1acac">Log in</a>
+                        <a href="<?php echo url_for('/staff/login.php'); ?>" style="color: #a1acac">Log in</a>
                     </li>
                     <li>
                         <a href="#!" style="color: #a1acac">Link 2</a>
@@ -44,7 +44,7 @@
         </div>
     </div>
     <div class="footer-copyright text-center py-3">
-        <p style="color: white;">© 2018 Copyright: Adam, Ibs, Rory, Stanislav, Oscar</p>
+        <p style="color: white;">© 2018 Copyright: Adam, Rory, Stanislav, Ibs, Oscar</p>
     </div>
     <!-- Copyright -->
 

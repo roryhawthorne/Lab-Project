@@ -1,4 +1,13 @@
-
+<?php
+// Initialize the session
+session_start();
+ 
+// Check if the user is logged in, if not then redirect them to login page
+if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+    header("location: login.php");
+    exit;
+}
+?>
 <?php
   if(!isset($page_title)) { $page_title = 'Staff Area'; }
 ?>
@@ -6,17 +15,17 @@
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
-<title> Staff Homepage - <?php echo h($page_title); ?></title>
+<title> Staff - <?php echo h($page_title); ?></title>
 <meta charset="utf-8">
 <meta name ="viewport" content ="width=device-width", "initial-scale=1.0", "shrink-to-fit=no">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 <link rel="stylesheet" media="all" href="<?php echo url_for('/stylesheets/stylesheet.css'); ?>" />
 </head>
 
-  <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a class="navbar-brand" href="#" >
-        <img src="images/home.png" width="30" height="30">
+<body>
+    <nav class="navbar navbar-expand-lg shadow-lg">
+      <a class="navbar-brand" href="<?php echo url_for('/index.php'); ?>" >
+        <img src="images/logo-header.png" width="380" height="98">
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -25,17 +34,21 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:rgba(255,255,255,.5);">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Members
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Name</a>
+              <a class="dropdown-item" href="<?php echo url_for('/staff/staff-view-all-members.php'); ?>">View All</a>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">Refunds required</a>
+              <a class="dropdown-item" href="#">Add new</a>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">Banned members</a>
+              <a class="dropdown-item" href="<?php echo url_for('/staff/staff-refunds.php'); ?>">Refunds required</a>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">Required extensions</a>
+              <a class="dropdown-item" href="<?php echo url_for('/staff/staff-ban.php'); ?>">Banned members</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="<?php echo url_for('/staff/staff-due-games.php'); ?>">Due Games</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Manage extensions</a>
               <div class="dropdown-divider"></div>
             </div>
           </li>
@@ -43,7 +56,7 @@
             <a class="nav-link" href="#">Overdue Items</a>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:rgba(255,255,255,.5);">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Secretary abilities
             </a>
             <div class ="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -60,10 +73,10 @@
               Account
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Homepage</a>
+              <a class="dropdown-item" href="<?php echo url_for('/staff/staff-portal.php'); ?>">Homepage</a>
               <a class="dropdown-item" href="#">Details</a>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="../private/scripts/logout.php">Logout</a>
+              <a class="dropdown-item" href="../../private/scripts/logout.php">Logout</a>
             </div>
           </li>
         </ul>
