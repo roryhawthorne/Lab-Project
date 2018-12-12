@@ -1,6 +1,40 @@
 <?php require_once('../../private/initialize.php'); ?>
 <?php $page_title = 'View All Members'; ?>
 <?php include(SHARED_PATH . '/staff-header.php'); ?>
+<?php 
+
+    $sql = "SELECT id, fname, lname, email, address, member_since FROM members ORDER BY ";
+
+    if (isset($_GET['order-by'])) {
+        $order_type = $_GET['order-by'];
+        
+        
+        switch ($order_type) {
+            case "alphabet":
+                $sql .= "lname ASC, fname ASC";
+                break;
+            case "alphabetdesc":
+                $sql .= "lname DESC, fname DESC";
+                break;
+            case "newestmember":
+                $sql .= "member_since DESC";
+                break;
+            case "oldestmember":
+                $sql .= "member_since ASC";
+                break;
+            default:
+                $sql = substr($sql, 0, -10);
+        }
+
+        
+    } else {
+        // Default ordering
+        $sql = "SELECT id, fname, lname, email, address, member_since FROM members";
+    }
+    
+    $result = mysqli_query($db, $sql);
+    confirm_result_set($result);    
+?>
 
 <br/>
 <br/>
@@ -40,10 +74,11 @@
                     <div>
                         <h3>Order By</h3>
                         <hr/>
-                        <p><a href="#">Alphabet</a></p>
-                        <p><a href="#">Reverse alphabet</a></p>
-                        <p><a href="#">Newest members</a></p>
-                        <p><a href="#">Oldest members</a></p>
+                        <p><a href="staff-view-all-members.php">Default</a></p>
+                        <p><a href="staff-view-all-members.php?order-by=<?php echo alphabet ?>">Alphabet</a></p>
+                        <p><a href="staff-view-all-members.php?order-by=<?php echo alphabetdesc ?>">Reverse alphabet</a></p>
+                        <p><a href="staff-view-all-members.php?order-by=<?php echo newestmember ?>">Newest members</a></p>
+                        <p><a href="staff-view-all-members.php?order-by=<?php echo oldestmember ?>">Oldest members</a></p>
                     </div>
                 </div>
             </div>
@@ -56,31 +91,36 @@
             <table class="table" style="font-family: arial;">
                 <thead>
                     <tr>
-                        <th scope="col">#</th>
+                        <th scope="col">ID</th>
                         <th scope="col">First</th>
                         <th scope="col">Last</th>
-                        <th scope="col">Handle</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Address</th>
+                        <th scope="col">Member Since</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>Larry</td>
-                        <td>the Bird</td>
-                        <td>@twitter</td>
-                    </tr>
+                   <?php
+                        
+                        $count = 0; 
+                        while($row = mysqli_fetch_assoc($result)) {
+                        ?>
+                        
+                        <tr>
+                            <th scope="row"><?php echo $row['id'] ?></th>
+                            <td><?php echo $row['fname'] ?></td>
+                            <td><?php echo $row['lname'] ?></td>
+                            <td><?php echo $row['email'] ?></td>
+                            <td><?php echo $row['address'] ?></td>
+                            <td><?php echo $row['member_since'] ?></td>     
+                        </tr>
+                        <?php
+                            $count++;
+                        }
+                        
+                        mysqli_free_result($result);
+                        ?>
+                        
                 </tbody>
             </table>
         </div>
