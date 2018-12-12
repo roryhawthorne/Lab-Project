@@ -20,7 +20,7 @@ CREATE TABLE games (
     CHECK (platform IN ('PS4', 'Xbox One', 'PC', 'PS Vita', 'Switch', 'Xbox 360', 'PS3'))
 );
 
-INSERT INTO members (email, password) VALUES ('adam.able@kcl.ac.uk', '123456789'), ('k1763909@kcl.ac.uk', '987654321'), ("rory.hawthorne@kcl.ac.uk", "qwertyuiop");
+/*INSERT INTO members (email, password) VALUES ('adam.able@kcl.ac.uk', '123456789'), ('k1763909@kcl.ac.uk', '987654321'), ("rory.hawthorne@kcl.ac.uk", "qwertyuiop");*/
 
 INSERT INTO games (title, release_date, score, platform, image, description)
 VALUES 
