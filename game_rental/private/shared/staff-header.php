@@ -40,7 +40,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="<?php echo url_for('/staff/staff-view-all-members.php'); ?>">View All</a>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">Add new</a>
+              <a class="dropdown-item" href="<?php echo url_for('/staff/staff-add-remove-member.php'); ?>">Add/Remove</a>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="<?php echo url_for('/staff/staff-refunds.php'); ?>">Refunds required</a>
               <div class="dropdown-divider"></div>

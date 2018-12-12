@@ -15,7 +15,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $email_err = "Please enter an email.";
     } else{
         // Prepare a select statement
-        $sql = "SELECT id FROM members WHERE email = ?";
+        $sql = "SELECT id FROM staff WHERE email = ?";
         
         if($stmt = mysqli_prepare($db, $sql)){
             // Bind variables to the prepared statement as parameters
@@ -66,7 +66,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     if(empty($email_err) && empty($password_err) && empty($confirm_password_err)){
         
         // Prepare an insert statement
-        $sql = "INSERT INTO members (email, password) VALUES (?, ?)";
+        $sql = "INSERT INTO staff (email, password) VALUES (?, ?)";
          
         if($stmt = mysqli_prepare($db, $sql)){
             // Bind variables to the prepared statement as parameters
@@ -130,7 +130,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
           
           <div class="form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
             <label for="exampleInputEmail1">Email address</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email" name="email" value="<?php echo $username; ?>">
+            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email" name="email" value="<?php echo $email; ?>">
             <span class="help-block"><?php echo $email_err; ?>
           </div>
           
