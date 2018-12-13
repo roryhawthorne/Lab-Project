@@ -35,7 +35,7 @@
                 </thead>
                 <tbody>
                     <?php
-                        $sql = "SELECT id, fname, lname, email FROM members";
+                        $sql = "SELECT id, fname, lname, email, is_banned FROM members";
                         $result = mysqli_query($db, $sql);
                         confirm_result_set($result);
                         
@@ -49,9 +49,22 @@
                             <td><?php echo $row['lname'] ?></td>
                             <td><?php echo $row['email'] ?></td>
                             <td>
-                                <form>
+                                <form id="ban-checkbox" action="<?php echo url_for('../private/scripts/ban-member.php'); ?>" method="post">
                                     <div class="form-check">
-                                        <a href=""><input type="checkbox" class="form-check-input" id="banCheck"></a>
+                                        <input type="text" name="id" value="<?php echo $row['id'];  ?>" style="display: none;"/>
+                                        <input type="text" name="banned" value="<?php echo $row['is_banned'];  ?>" style="display: none;"/>
+                                        <div class="form-check">
+                                            <button type="submit" class="btn filter-btn" id="banMember" name="Submit">
+                                                <?php 
+                                                if ($row['is_banned'] == 1) { ?>
+                                                    YES
+                                                <?php 
+                                                } else { ?>
+                                                    NO
+                                                <?php 
+                                                } ?>
+                                            </button>
+                                        </div>                                        
                                     </div>
                                 </form>
                             </td>       
