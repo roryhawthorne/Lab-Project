@@ -16,10 +16,12 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 <html lang="en">
 <head>
 <title> Staff - <?php echo h($page_title); ?></title>
-<meta charset="utf-8">
-<meta name ="viewport" content ="width=device-width", "initial-scale=1.0", "shrink-to-fit=no">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-<link rel="stylesheet" media="all" href="<?php echo url_for('/stylesheets/stylesheet.css'); ?>" />
+    <meta charset="utf-8">
+    <meta name ="viewport" content ="width=device-width", "initial-scale=1.0", "shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Bungee" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" media="all" href="<?php echo url_for('/stylesheets/stylesheet.css') ?>" />
 </head>
 
 <body>
@@ -38,7 +40,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
               Members
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="<?php echo url_for('/staff/staff-view-all-members.php'); ?>">View All</a>
+              <a class="dropdown-item" href="<?php echo url_for('/staff/staff-view-all-members.php?see-only=all&order-by=default'); ?>">View All</a>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="<?php echo url_for('/staff/staff-add-remove-member.php'); ?>">Add/Remove</a>
               <div class="dropdown-divider"></div>
@@ -63,6 +65,8 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
               <a class = "dropdown-item" href="#">change rules</a>
               <div class="dropdown-divider"></div>
               <a class = "dropdown-item" href="#">Manage access rights</a>
+              <div class="dropdown-divider"></div>
+              <a class = "dropdown-item" href="sign-up.php">Add new staff member</a>
             </div>
           </li>
 
