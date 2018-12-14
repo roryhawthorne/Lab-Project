@@ -29,7 +29,7 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav" style="margin: auto;">
               <li class="nav-item" >
-                <a class="nav-link" name="browse-games" href="index.php?see-only=<?php echo xbox1 ?>&order-by=<?php echo $order_type?>">XBOX ONE</a>
+                <a class="nav-link" href="index.php?see-only=<?php echo xbox1 ?>&order-by=<?php echo $order_type?>#browse-games">XBOX ONE</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" name="browse-games" href="index.php?see-only=<?php echo ps4 ?>&order-by=<?php echo $order_type?>">PS4</a>

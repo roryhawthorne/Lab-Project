@@ -11,23 +11,26 @@
     if (isset($_GET['see-only'])) {
         
         $view_only = $_GET['see-only'];
-        $sql .= " WHERE ";
+        $sql .= " WHERE platform=";
         
         switch ($view_only) {
             case "all":
-                $sql = substr($sql, 0, -7);
+                $sql = substr($sql, 0, -16);
                 break;
             case "xbox1":
-                $sql .= "platform='Xbox One'";
+                $sql .= "'Xbox One'";
                 break;
             case "ps4":
-                $sql .= "platform='PS4'";
+                $sql .= "'PS4'";
                 break;
             case "switch":
-                $sql .= "platform='Switch'";
+                $sql .= "'Switch'";
+                break;
+            case "pc":
+                $sql .= "'PC'";
                 break;
             default:
-                $sql = substr($sql, 0, -7);
+                $sql = substr($sql, 0, -16);
                 break;
         }
     }
@@ -84,13 +87,13 @@
                 </ol>
                 <div class="carousel-inner">
                       <div class="carousel-item active">
-                          <a href="#"><img class="d-block w-100" src="images/carousel/shadowofthetombraider-carousel.jpg" alt="First slide"></a>
+                          <a href="game-details.php?id=12"><img class="d-block w-100" src="images/carousel/shadowofthetombraider-carousel.jpg" alt="First slide"></a>
                       </div>
                       <div class="carousel-item">
-                          <a href="#"><img class="d-block w-100" src="images/carousel/bfv-carousel.jpg" alt="Second slide"></a>
+                          <a href="game-details.php?id=1"><img class="d-block w-100" src="images/carousel/bfv-carousel.jpg" alt="Second slide"></a>
                       </div>
                       <div class="carousel-item">
-                          <a href="#"><img class="d-block w-100" src="images/carousel/rdr2-carousel.jpg" alt="Third slide"></a>
+                          <a href="game-details.php?id=10"><img class="d-block w-100" src="images/carousel/rdr2-carousel.jpg" alt="Third slide"></a>
                       </div>
                 </div>
                 <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -128,13 +131,13 @@
         </div>
         <div class="row" style="margin: auto;">
             <div class="col-md-4 game" >
-                <a href="#"><img src="images/box-art/bfv.jpg" class="img-fluid shadow" style="border-radius: 1em;"/></a>
+                <a href="game-details.php?id=7"><img src="images/box-art/botw-switch.jpg" class="img-fluid shadow" style="border-radius: 1em;"/></a>
             </div>
             <div class="col-md-4 game">
-                <a href="#"><img src="images/box-art/bfv.jpg" class="img-fluid shadow" style="border-radius: 1em;"/></a>
+                <a href="game-details.php?id=6"><img src="images/box-art/assassins-creed-odyssey-xbox1.jpg" class="img-fluid shadow" style="border-radius: 1em;"/></a>
             </div>
             <div class="col-md-4 game">
-                <a href="#"><img src="images/box-art/bfv.jpg" class="img-fluid shadow" style="border-radius: 1em;"/></a>
+                <a href="game-details.php?id=8"><img src="images/box-art/god-of-war-ps4.jpg" class="img-fluid shadow" style="border-radius: 1em;"/></a>
             </div>
         </div>
         <div class="row">
@@ -179,6 +182,7 @@
                         <p><a href="index.php?see-only=<?php echo xbox1 ?>&order-by=<?php echo $order_type?>#browse-games">Xbox One</a></p>
                         <p><a href="index.php?see-only=<?php echo ps4 ?>&order-by=<?php echo $order_type?>#browse-games">PS4</a></p>
                         <p><a href="#browse-games">Nintendo Switch</a></p>
+                        <p><a href="index.php?see-only=<?php echo pc ?>&order-by=<?php echo $order_type?>#browse-games">PC</a></p>
                     </div>
                     <br/>
                     <div>

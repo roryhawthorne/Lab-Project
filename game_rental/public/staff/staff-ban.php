@@ -8,7 +8,7 @@
 
     <div class="container shadow-lg" style="background-color: white; padding: 2em; margin: auto; font-family: 'bungee', cursive; border-radius: 1em; height: 100%;">
         <div class="row">
-            <h2 class"col-md-12" style="font-size: 3em; margin: auto;">set refunds</h2>
+            <h2 class"col-md-12" style="font-size: 3em; margin: auto;">lay down the ban hammer</h2>
         </div>
         <div class="row">
             <br/>
