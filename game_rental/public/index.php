@@ -3,11 +3,74 @@
 <?php include(SHARED_PATH . '/header.php'); ?>
 
 <?php 
-    $sql = "SELECT id, title, release_date, score, image FROM games";
+
+    $view_only = "";
+    $order_type = "";
+    $sql = "SELECT id, title, platform, release_date, score, image FROM games ";
+    
+    if (isset($_GET['see-only'])) {
+        
+        $view_only = $_GET['see-only'];
+        $sql .= " WHERE ";
+        
+        switch ($view_only) {
+            case "all":
+                $sql = substr($sql, 0, -7);
+                break;
+            case "xbox1":
+                $sql .= "platform='Xbox One'";
+                break;
+            case "ps4":
+                $sql .= "platform='PS4'";
+                break;
+            case "switch":
+                $sql .= "platform='Switch'";
+                break;
+            default:
+                $sql = substr($sql, 0, -7);
+                break;
+        }
+    }
+    
+    if (isset($_GET['order-by'])) {
+        $order_type = $_GET['order-by'];
+        
+        $sql .= " ORDER BY ";
+        
+        switch ($order_type) {
+            case "def":
+                $sql = substr($sql, 0, -10);
+                break;
+            case "alphabet":
+                $sql .= "title ASC";
+                break;
+            case "alphabetdesc":
+                $sql .= "title DESC";
+                break;
+            case "newestgames":
+                $sql .= "release_date DESC";
+                break;
+            case "oldestgames":
+                $sql .= "release_date ASC";
+                break;
+            default:
+                $sql = substr($sql, 0, -10);
+                break;
+               
+        }
+    }
+    
     $result = mysqli_query($db, $sql);
-    confirm_result_set($result);
-            
-    $num_rows = $result->num_rows;
+    confirm_result_set($result);   
+
+
+
+
+//    $sql = "SELECT id, title, release_date, score, image FROM games";
+//    $result = mysqli_query($db, $sql);
+//    confirm_result_set($result);
+//            
+//    $num_rows = $result->num_rows;
 ?>
 
     <!-- carousel -->
@@ -85,7 +148,8 @@
     <br/>
     
     <!-- all games -->
-    <div class="container shadow-lg" style="background-color: white; padding: 2em; margin: auto; font-family: 'bungee', cursive; border-radius: 1em; height: 100%;">
+    <div class="container shadow-lg" style="background-color: white; padding: 2em; margin: auto; font-family: 'bungee', cursive; border-radius: 1em; height: 100%;" >
+        <a id="browse-games"></a>
         <div class="row">
             <h2 class"col-md-12" style="font-size: 3em; margin: auto;">BROWSE ALL GAMES</h2>
         </div>
@@ -111,18 +175,20 @@
                     <div>
                         <h3>Platform</h3>
                         <hr/>
-                        <p><a href="#">Xbox One</a></p>
-                        <p><a href="#">PS4</a></p>
-                        <p><a href="#">Nintendo Switch</a></p>
+                        <p><a href="index.php?see-only=<?php echo all ?>&order-by=<?php echo $order_type?>#browse-games">All Platforms</a></p>
+                        <p><a href="index.php?see-only=<?php echo xbox1 ?>&order-by=<?php echo $order_type?>#browse-games">Xbox One</a></p>
+                        <p><a href="index.php?see-only=<?php echo ps4 ?>&order-by=<?php echo $order_type?>#browse-games">PS4</a></p>
+                        <p><a href="#browse-games">Nintendo Switch</a></p>
                     </div>
                     <br/>
                     <div>
                         <h3>Order By</h3>
                         <hr/>
-                        <p><a href="#">Alphabet</a></p>
-                        <p><a href="#">Reverse alphabet</a></p>
-                        <p><a href="#">Newest release</a></p>
-                        <p><a href="#">Oldest release</a></p>
+                        <p><a href="index.php?see-only=<?php echo $view_only?>&order-by=<?php echo def ?>#browse-games">Default</a></p>
+                        <p><a href="index.php?see-only=<?php echo $view_only?>&order-by=<?php echo alphabet ?>#browse-games">Alphabet</a></p>
+                        <p><a href="index.php?see-only=<?php echo $view_only?>&order-by=<?php echo alphabetdesc ?>#browse-games">Reverse alphabet</a></p>
+                        <p><a href="index.php?see-only=<?php echo $view_only?>&order-by=<?php echo newestgames ?>#browse-games">Newest release</a></p>
+                        <p><a href="index.php?see-only=<?php echo $view_only?>&order-by=<?php echo oldestgames ?>#browse-games">Oldest release</a></p>
                     </div>
                 </div>
             </div>

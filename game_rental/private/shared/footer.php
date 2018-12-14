@@ -10,16 +10,16 @@
                 <h5 class="text-uppercase" style="color: white;">Browse Games</h5>
                 <ul class="list-unstyled">
                     <li>
-                        <a href="#!" style="color: #a1acac">Link 1</a>
+                        <a href="#" style="color: #a1acac">Back to top</a>
                     </li>
                     <li>
-                        <a href="#!" style="color: #a1acac">Link 2</a>
+                        <a href="index.php?see-only=<?php echo xbox1 ?>&order-by=<?php echo $order_type?>#browse-games" style="color: #a1acac">Xbox One</a>
                     </li>
                     <li>
-                        <a href="#!" style="color: #a1acac">Link 3</a>
+                        <a href="index.php?see-only=<?php echo ps4 ?>&order-by=<?php echo $order_type?>#browse-games" style="color: #a1acac">PS4</a>
                     </li>
                     <li>
-                        <a href="#!" style="color: #a1acac">Link 4</a>
+                        <a href="#!" style="color: #a1acac">Nintendo Switch</a>
                     </li>
                 </ul>
           </div>
@@ -31,13 +31,13 @@
                         <a href="<?php echo url_for('/staff/login.php'); ?>" style="color: #a1acac">Log in</a>
                     </li>
                     <li>
-                        <a href="#!" style="color: #a1acac">Link 2</a>
+                        <a href="<?php echo url_for('/staff/staff-add-member.php'); ?>" style="color: #a1acac">Add Member</a>
                     </li>
                     <li>
-                        <a href="#!" style="color: #a1acac">Link 3</a>
+                        <a href="<?php echo url_for('/staff/staff-remove-member.php'); ?>" style="color: #a1acac">Remove Member</a>
                     </li>
                     <li>
-                        <a href="#!" style="color: #a1acac">Link 4</a>
+                        <a href="<?php echo url_for('/staff/staff-ban.php'); ?>" style="color: #a1acac">Ban</a>
                     </li>
                 </ul>
             </div>

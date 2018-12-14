@@ -95,29 +95,60 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 ?>
 
 
-<?php $page_title = 'Portal'; ?>
-<?php include(SHARED_PATH . '/staff-header.php'); ?>
-  <div class="col">
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <title>Staff Signup</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="https://fonts.googleapis.com/css?family=Bungee" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <link rel="stylesheet" media="all" type="text/css" href="<?php $css = PUBLIC_PATH . '/stylesheets/stylesheet.css';  echo substr($css, 9);?>" />
+</head>
 
-    <div class="row">
-    
+<body style="overflow-y: scroll; overflow-x:hidden; background-color: #e7e7e7;">
+
+
+    <!-- navbar -->
+    <div class="shadow-lg">
+        <nav class="navbar navbar-expand-md navbar-light bg-faded shadow-lg">
+          <a class="navbar-brand" href="<?php $path = PUBLIC_PATH . '/index.php'; echo substr($path, 9);?>">
+            <img src="../images/logo-header.png" width="380" height="98">
+          </a>
+          <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav" style="margin: auto;">
+              <li class="nav-item" >
+                <a class="nav-link" href="javascript:void(0)">XBOX ONE</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="javascript:void(0)">PS4</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="javascript:void(0)">SWITCH</a>
+              </li>
+            </ul>
+            <ul class="navbar-nav">
+              <span class="navbar-brand" href="javascript:void(0)">
+                <img src="../images/header-right.jpg" width="380" height="98">
+              </span>
+            </ul>
+          </div>
+        </nav>
+    </div>
+
+
+  <div class="container jumbotron">
+
+    <div class="row">  
       <div class="col-4"></div>
-      
-      <div class="col jumbotron">
+      <div class="col jumbotron shadow">
       
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-          <div class ="from-group">
-            <label for="exampleInputName1"> First Name</label>
-            <br>
-            <input type="name" class="from-control" id="exampleInputName1" placeholder="Enter your first name">
-          </div>
-          <div class ="from-group">
-            <label for="exampleInputSurname1">Last Name</label>
-            <br>
-            <input type="surname" class="from-control" id="exampleInputSurname1" placeholder="Enter your family name">
-          </div>
-
-          <br>
           
           <div class="form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
             <label for="exampleInputEmail1">Email address</label>
@@ -138,30 +169,22 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
           </div>
 
           <br>
-          
-          <div class="form-group">
-            <label for="exampleInputCardHolderName1">Cardholder Name</label>
-            <input type="cardName" class="form-control" id="exampleInputCardHolderName1" placeholder="Enter the name on the card">
-          </div>
-          
-          <div class="form-group">
-            <label for="exampleInputCardNumber1">Card Number</label>
-            <input type="number" class="form-control" maxlenght="16" id="exampleInputCardNumber1"  placeholder="The 16 digit card number">
-          </div>
-          
-          <div class="form-group">
-            <label for="exampleInputExpiryDate1">Expiry Date</label>
-            <input type="month" class="form-control" id="exampleInputExpiryDate1" placeholder="month">
-          </div>
 
           <button type="submit" class="btn btn-primary">Sign up</button>
+          
         </form>
-        
-      </div>
-      
+       </div>
       <div class="col-4"></div>
     </div>
-
   </div>
   
-<?php include(SHARED_PATH . '/footer.php'); ?>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+</body>
+</html>
+
+<?php
+  db_disconnect($db);
+?>

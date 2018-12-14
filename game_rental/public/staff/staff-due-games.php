@@ -23,32 +23,6 @@
             <br/>
         </div>
         <div class="row">
-            <button class="btn col-md-12 filter-btn shadow" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                FILTER
-            </button>
-            <div class="collapse" id="collapseExample" style="width: 100%;">
-                <br/>
-                <div class="card card-body">
-                    <div>
-                        <h3>See only</h3>
-                        <hr/>
-                        <p><a href="#">Banned</a></p>
-                        <p><a href="#">Overdue</a></p>
-                        <p><a href="#">Extensions</a></p>
-                    </div>
-                    <br/>
-                    <div>
-                        <h3>Order By</h3>
-                        <hr/>
-                        <p><a href="#">Alphabet</a></p>
-                        <p><a href="#">Reverse alphabet</a></p>
-                        <p><a href="#">Newest members</a></p>
-                        <p><a href="#">Oldest members</a></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
             <br/>
             <br/>
         </div>
