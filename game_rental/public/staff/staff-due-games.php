@@ -23,32 +23,6 @@
             <br/>
         </div>
         <div class="row">
-            <button class="btn col-md-12 filter-btn shadow" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                FILTER
-            </button>
-            <div class="collapse" id="collapseExample" style="width: 100%;">
-                <br/>
-                <div class="card card-body">
-                    <div>
-                        <h3>See only</h3>
-                        <hr/>
-                        <p><a href="#">Banned</a></p>
-                        <p><a href="#">Overdue</a></p>
-                        <p><a href="#">Extensions</a></p>
-                    </div>
-                    <br/>
-                    <div>
-                        <h3>Order By</h3>
-                        <hr/>
-                        <p><a href="#">Alphabet</a></p>
-                        <p><a href="#">Reverse alphabet</a></p>
-                        <p><a href="#">Newest members</a></p>
-                        <p><a href="#">Oldest members</a></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
             <br/>
             <br/>
         </div>
@@ -56,7 +30,7 @@
             <table class="table" style="font-family: arial;">
                 <thead>
                     <tr>
-                        <th scope="col">#</th>
+                        <th scope="col">ID</th>
                         <th scope="col">First</th>
                         <th scope="col">Last</th>
                         <th scope="col">Game</th>
@@ -64,27 +38,26 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>Halo 3</td>
-                        <td>2018-09-15</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>Black Ops 4</td>
-                        <td>2015-11-12</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>Larry</td>
-                        <td>the Bird</td>
-                        <td>Battlefield 5</td>
-                        <td>2018-06-21</td>
-                    </tr>
+                    <?php
+                        $sql = "SELECT rentals.id AS rental_id, rentals.due_date, members.fname, members.lname, members.id AS member_id, games.title FROM members JOIN rentals ON members.id=rentals.member_id JOIN games ON rentals.game_id=games.id AND rentals.due_date<CURRENT_TIMESTAMP";
+                        $result = mysqli_query($db, $sql);
+                        confirm_result_set($result);
+                        
+                        while($row = mysqli_fetch_assoc($result)) {
+                        ?>
+                        
+                        <tr>
+                            <th scope="row"><?php echo $row['rental_id'] ?></th>
+                            <td><?php echo $row['fname'] ?></td>
+                            <td><?php echo $row['lname'] ?></td>
+                            <td><?php echo $row['title'] ?></td>
+                            <td><?php echo $row['due_date'] ?></td>     
+                        </tr>
+                        <?php
+                        }
+                        
+                        mysqli_free_result($result);
+                        ?>
                 </tbody>
             </table>
         </div>

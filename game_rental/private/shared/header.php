@@ -29,13 +29,13 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav" style="margin: auto;">
               <li class="nav-item" >
-                <a class="nav-link" href="javascript:void(0)">XBOX ONE</a>
+                <a class="nav-link" href="index.php?see-only=<?php echo xbox1 ?>&order-by=<?php echo $order_type?>#browse-games">XBOX ONE</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="javascript:void(0)">PS4</a>
+                <a class="nav-link" href="index.php?see-only=<?php echo ps4 ?>&order-by=<?php echo $order_type?>#browse-games">PS4</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="javascript:void(0)">SWITCH</a>
+                <a class="nav-link" href="#">SWITCH</a>
               </li>
             </ul>
             <ul class="navbar-nav">

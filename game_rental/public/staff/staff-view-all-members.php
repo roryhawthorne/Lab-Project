@@ -1,15 +1,45 @@
 <?php require_once('../../private/initialize.php'); ?>
 <?php $page_title = 'View All Members'; ?>
 <?php include(SHARED_PATH . '/staff-header.php'); ?>
+
 <?php 
-
-    $sql = "SELECT id, fname, lname, email, address, member_since FROM members ORDER BY ";
-
+    $view_only = "";
+    $order_type = "";
+    $sql = "SELECT id, fname, lname, email, address, member_since, is_banned FROM members ";
+    
+    if (isset($_GET['see-only'])) {
+        
+        $view_only = $_GET['see-only'];
+        $sql .= " WHERE ";
+        
+        switch ($view_only) {
+            case "all":
+                $sql = "SELECT id, fname, lname, email, address, member_since FROM members";
+                break;
+            case "banned":
+                $sql .= "is_banned=1";
+                break;
+            case "overdue":
+                $sql .= "";
+                break;
+            case "extensions":
+                $sql .= "";
+                break;
+            default:
+                $sql = "SELECT id, fname, lname, email, address, member_since FROM members";
+                break;
+        }
+    }
+    
     if (isset($_GET['order-by'])) {
         $order_type = $_GET['order-by'];
         
+        $sql .= " ORDER BY ";
         
         switch ($order_type) {
+            case "def":
+                $sql = substr($sql, 0, -10);
+                break;
             case "alphabet":
                 $sql .= "lname ASC, fname ASC";
                 break;
@@ -24,12 +54,9 @@
                 break;
             default:
                 $sql = substr($sql, 0, -10);
+                break;
+               
         }
-
-        
-    } else {
-        // Default ordering
-        $sql = "SELECT id, fname, lname, email, address, member_since FROM members";
     }
     
     $result = mysqli_query($db, $sql);
@@ -66,7 +93,8 @@
                     <div>
                         <h3>See only</h3>
                         <hr/>
-                        <p><a href="#">Banned</a></p>
+                        <p><a href="staff-view-all-members.php?see-only=<?php echo all ?>&order-by=<?php echo $order_type?>">All</a></p>
+                        <p><a href="staff-view-all-members.php?see-only=<?php echo banned ?>&order-by=<?php echo $order_type?>">Banned</a></p>
                         <p><a href="#">Overdue</a></p>
                         <p><a href="#">Extensions</a></p>
                     </div>
@@ -74,11 +102,11 @@
                     <div>
                         <h3>Order By</h3>
                         <hr/>
-                        <p><a href="staff-view-all-members.php">Default</a></p>
-                        <p><a href="staff-view-all-members.php?order-by=<?php echo alphabet ?>">Alphabet</a></p>
-                        <p><a href="staff-view-all-members.php?order-by=<?php echo alphabetdesc ?>">Reverse alphabet</a></p>
-                        <p><a href="staff-view-all-members.php?order-by=<?php echo newestmember ?>">Newest members</a></p>
-                        <p><a href="staff-view-all-members.php?order-by=<?php echo oldestmember ?>">Oldest members</a></p>
+                        <p><a href="staff-view-all-members.php?see-only=<?php echo $view_only?>&order-by=<?php echo def ?>">Default</a></p>
+                        <p><a href="staff-view-all-members.php?see-only=<?php echo $view_only?>&order-by=<?php echo alphabet ?>">Alphabet</a></p>
+                        <p><a href="staff-view-all-members.php?see-only=<?php echo $view_only?>&order-by=<?php echo alphabetdesc ?>">Reverse alphabet</a></p>
+                        <p><a href="staff-view-all-members.php?see-only=<?php echo $view_only?>&order-by=<?php echo newestmember ?>">Newest members</a></p>
+                        <p><a href="staff-view-all-members.php?see-only=<?php echo $view_only?>&order-by=<?php echo oldestmember ?>">Oldest members</a></p>
                     </div>
                 </div>
             </div>

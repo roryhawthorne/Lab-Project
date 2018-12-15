@@ -16,10 +16,12 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 <html lang="en">
 <head>
 <title> Staff - <?php echo h($page_title); ?></title>
-<meta charset="utf-8">
-<meta name ="viewport" content ="width=device-width", "initial-scale=1.0", "shrink-to-fit=no">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-<link rel="stylesheet" media="all" href="<?php echo url_for('/stylesheets/stylesheet.css'); ?>" />
+    <meta charset="utf-8">
+    <meta name ="viewport" content ="width=device-width", "initial-scale=1.0", "shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Bungee" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" media="all" href="<?php echo url_for('/stylesheets/stylesheet.css') ?>" />
 </head>
 
 <body>
@@ -38,32 +40,24 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
               Members
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="<?php echo url_for('/staff/staff-view-all-members.php'); ?>">View All</a>
+              <a class="dropdown-item" href="<?php echo url_for('/staff/staff-view-all-members.php?see-only=all&order-by=default'); ?>">View All</a>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="<?php echo url_for('/staff/staff-add-remove-member.php'); ?>">Add/Remove</a>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="<?php echo url_for('/staff/staff-refunds.php'); ?>">Refunds required</a>
+              <a class="dropdown-item" href="<?php echo url_for('/staff/staff-add-rental.php'); ?>">Add Rental</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="<?php echo url_for('/staff/staff-return-rental.php'); ?>">Return Rental</a>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="<?php echo url_for('/staff/staff-ban.php'); ?>">Banned members</a>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="<?php echo url_for('/staff/staff-due-games.php'); ?>">Due Games</a>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">Manage extensions</a>
+              <a class="dropdown-item" href="<?php echo url_for('/staff/staff-manage-extensions.php'); ?>">Manage extensions</a>
               <div class="dropdown-divider"></div>
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Overdue Items</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Secretary abilities
-            </a>
-            <div class ="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class = "dropdown-item" href="#">change rules</a>
-              <div class="dropdown-divider"></div>
-              <a class = "dropdown-item" href="#">Manage access rights</a>
-            </div>
+            <a class="nav-link" href="sign-up.php">Add new staff member</a>
           </li>
 
         </ul>
@@ -74,7 +68,6 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="<?php echo url_for('/staff/staff-portal.php'); ?>">Homepage</a>
-              <a class="dropdown-item" href="#">Details</a>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="../../private/scripts/logout.php">Logout</a>
             </div>
