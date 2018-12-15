@@ -1,6 +1,11 @@
 <?php require_once('../../private/initialize.php'); ?>
-<?php $page_title = 'Add Rental'; ?>
+<?php $page_title = 'Return Rental'; ?>
 <?php include(SHARED_PATH . '/staff-header.php'); ?>
+<?php 
+    $sql = "SELECT rentals.id AS rental_id, rentals.due_date, members.fname, members.lname, members.id AS member_id, games.title, games.id AS game_id FROM members JOIN rentals ON members.id=rentals.member_id JOIN games ON rentals.game_id=games.id";
+    $not_banned = mysqli_query($db, $sql);
+    confirm_result_set($not_banned);
+?>
 
 <br/>
 <br/>
@@ -11,7 +16,7 @@
 
 <div class="container shadow-lg" style="background-color: white; padding: 2em; margin: auto; font-family: 'bungee', cursive; border-radius: 1em; height: 100%;">
     <div class="row">
-        <h2 class"col-md-12" style="font-size: 3em; margin: auto;">Add rental</h2>
+        <h2 class"col-md-12" style="font-size: 3em; margin: auto;">return rental</h2>
     </div>
     <div class="row">
         <br/>
@@ -27,20 +32,17 @@
     </div>
     <div class="row">
         <div class="col-md-12">
-            <form class="form" action="<?php echo url_for('../private/scripts/add-rental.php'); ?>" method="post">
+            <form class="form" action="<?php echo url_for('../private/scripts/return-rental.php'); ?>" method="post">
                 <div class="row mt-5">
                     <div class="col-12 form-group">
                         <label for="sel1">Members:</label>
-                        <select class="form-control" name ="members" style="font-family: Open Sans">
+                        
+                        <select class="form-control" name ="rentals" style="font-family: Open Sans">
                             
                             <?php 
-                            
-                                $sql = "SELECT id, fname, lname FROM members WHERE is_banned=FALSE";
-                                $not_banned = mysqli_query($db, $sql);
-                                confirm_result_set($not_banned);
                                 while($row = mysqli_fetch_assoc($not_banned)) {
                             ?>
-                                <option value="<?php echo $row['id']; ?>"> <?php echo "" . $row['fname'] . " " . $row['lname']; ?> </option>
+                                <option value="<?php echo $row['rental_id']; ?>|<?php echo $row['game_id']; ?>"> <?php echo "" . $row['fname'] . " " . $row['lname'] . " - " . $row['title']; ?> </option>
                             <?php 
                                 }
                                 mysqli_free_result($not_banned);
@@ -54,6 +56,8 @@
                         </div>
                     </div>
                 </div>
+                
+                
             </form>
         </div>
     </div>

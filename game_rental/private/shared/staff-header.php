@@ -57,19 +57,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Overdue Items</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Secretary abilities
-            </a>
-            <div class ="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class = "dropdown-item" href="#">change rules</a>
-              <div class ="dropdown-divider"></div>
-              <a class = "dropdown-item" href="#">Manage access rights</a>
-              <div class="dropdown-divider"></div>
-              <a class = "dropdown-item" href="sign-up.php">Add new staff member</a>
-            </div>
+            <a class="nav-link" href="sign-up.php">Add new staff member</a>
           </li>
 
         </ul>
@@ -80,7 +68,6 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="<?php echo url_for('/staff/staff-portal.php'); ?>">Homepage</a>
-              <a class="dropdown-item" href="#">Details</a>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="../../private/scripts/logout.php">Logout</a>
             </div>

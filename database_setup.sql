@@ -39,6 +39,18 @@ CREATE TABLE rentals (
     has_extension BOOLEAN DEFAULT FALSE
 );
 
+INSERT INTO members (fname, lname, email, address) VALUES 
+("Marc", "Murphy", "marc.murphy@kcl.ac.uk", "123 Enfield Chase, N11 3ER"),
+("Edward", "Danescu", "ed123@gmail.com", "The Badgers, Richmond, NW12 3RF"),
+("Ellie", "Tyrell", "ellie42@outlook.com", "99 Erlanger Road, SE15 5YU"),
+("Hannah", "Adams", "hhhhannah@grenwich.ac.uk", "99 Erlanger Road, SE15 5YU"),
+("Archie", "Saunders", "a-swizz@gmail.com", "12 Lovebrook Close, PL26 6PL"),
+("Billy", "Meneer", "billson@gmail.com", "67 Charlestown way, PL87 T78"),
+("Sophie", "Biber", "the.bibs@outlook.com", "56 Harbourside Inn, OB84 J12");
+
+INSERT INTO rentals (member_id, game_id) VALUES (1, 4), (5, 8), (3, 1), (3, 10);
+INSERT INTO rentals (member_id, game_id, due_date) VALUES (6, 2, '2018-11-09'), (2, 12, '2018-12-03'), (1, 13, '2018-12-17');
+
 INSERT INTO staff (email, password) VALUES ('k1763909@kcl.ac.uk', '$2y$10$vYiH4oN64vgYYUTU0QR4HuJKdpKAShoeFQtDcsKkJYPt.JlbZAPpq');
 
 INSERT INTO games (title, release_date, score, platform, stock, image, description)
