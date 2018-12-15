@@ -6,16 +6,16 @@
 
     $view_only = "";
     $order_type = "";
-    $sql = "SELECT id, title, platform, release_date, score, image FROM games ";
+    $sql = "SELECT id, title, platform, release_date, score, image FROM games WHERE stock > 0 ";
     
     if (isset($_GET['see-only'])) {
         
         $view_only = $_GET['see-only'];
-        $sql .= " WHERE platform=";
+        $sql .= " AND platform=";
         
         switch ($view_only) {
             case "all":
-                $sql = substr($sql, 0, -16);
+                $sql = substr($sql, 0, -14);
                 break;
             case "xbox1":
                 $sql .= "'Xbox One'";
@@ -30,7 +30,7 @@
                 $sql .= "'PC'";
                 break;
             default:
-                $sql = substr($sql, 0, -16);
+                $sql = substr($sql, 0, -14);
                 break;
         }
     }
@@ -181,7 +181,7 @@
                         <p><a href="index.php?see-only=<?php echo all ?>&order-by=<?php echo $order_type?>#browse-games">All Platforms</a></p>
                         <p><a href="index.php?see-only=<?php echo xbox1 ?>&order-by=<?php echo $order_type?>#browse-games">Xbox One</a></p>
                         <p><a href="index.php?see-only=<?php echo ps4 ?>&order-by=<?php echo $order_type?>#browse-games">PS4</a></p>
-                        <p><a href="#browse-games">Nintendo Switch</a></p>
+                        <p><a href="#">Nintendo Switch</a></p>
                         <p><a href="index.php?see-only=<?php echo pc ?>&order-by=<?php echo $order_type?>#browse-games">PC</a></p>
                     </div>
                     <br/>

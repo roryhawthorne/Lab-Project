@@ -51,4 +51,19 @@ function get_boolean_test($bit) {
     }
 }
 
+
+function not_banned_members() {
+    global $db;
+    $sql = "SELECT id, fname, lname FROM members";
+    $result = mysqli_query($db, $sql);
+    return result;
+}
+
+function find_game_data() {
+    global $db;
+    $sql = "SELECT * FROM games ORDER BY id ASC";
+    $result = mysqli_query($db, $sql);
+    return $result;
+}
+
 ?>

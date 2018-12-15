@@ -44,13 +44,15 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="<?php echo url_for('/staff/staff-add-remove-member.php'); ?>">Add/Remove</a>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="<?php echo url_for('/staff/staff-refunds.php'); ?>">Refunds required</a>
+              <a class="dropdown-item" href="<?php echo url_for('/staff/staff-add-rental.php'); ?>">Add Rental</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="<?php echo url_for('/staff/staff-return-rental.php'); ?>">Return Rental</a>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="<?php echo url_for('/staff/staff-ban.php'); ?>">Banned members</a>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="<?php echo url_for('/staff/staff-due-games.php'); ?>">Due Games</a>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">Manage extensions</a>
+              <a class="dropdown-item" href="<?php echo url_for('/staff/staff-manage-extensions.php'); ?>">Manage extensions</a>
               <div class="dropdown-divider"></div>
             </div>
           </li>
@@ -63,7 +65,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
             </a>
             <div class ="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class = "dropdown-item" href="#">change rules</a>
-              <div class="dropdown-divider"></div>
+              <div class ="dropdown-divider"></div>
               <a class = "dropdown-item" href="#">Manage access rights</a>
               <div class="dropdown-divider"></div>
               <a class = "dropdown-item" href="sign-up.php">Add new staff member</a>

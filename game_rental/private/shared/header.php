@@ -32,10 +32,10 @@
                 <a class="nav-link" href="index.php?see-only=<?php echo xbox1 ?>&order-by=<?php echo $order_type?>#browse-games">XBOX ONE</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" name="browse-games" href="index.php?see-only=<?php echo ps4 ?>&order-by=<?php echo $order_type?>">PS4</a>
+                <a class="nav-link" href="index.php?see-only=<?php echo ps4 ?>&order-by=<?php echo $order_type?>#browse-games">PS4</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" name="browse-games" href="#">SWITCH</a>
+                <a class="nav-link" href="#">SWITCH</a>
               </li>
             </ul>
             <ul class="navbar-nav">
